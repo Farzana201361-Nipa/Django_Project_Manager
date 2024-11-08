@@ -27,4 +27,12 @@ class Projects(models.Model):
     def __str__(self):
         return self.name
 
-                            
+
+class ProjectMembers(models.Model):
+    project = models.ForeignKey(Projects, on_delete=models.CASCADE, related_name='project_members')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='members')
+    role = models.CharField(max_length=50, choices=[('Admin', 'Admin'), ('Member', 'Member')])
+    
+    def __str__(self):
+        return f"{self.user.username} - {self.role} in {self.project.name}"
+                              
