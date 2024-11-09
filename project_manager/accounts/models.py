@@ -31,8 +31,36 @@ class Projects(models.Model):
 class ProjectMembers(models.Model):
     project = models.ForeignKey(Projects, on_delete=models.CASCADE, related_name='project_members')
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='members')
-    role = models.CharField(max_length=50, choices=[('Admin', 'Admin'), ('Member', 'Member')])
+    role = models.CharField(max_length=50, choices=[('Admin', 'Admin'), 
+                                                    ('Member', 'Member')])
     
     def __str__(self):
         return f"{self.user.username} - {self.role} in {self.project.name}"
+    
+ 
+ 
+class Tasks(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    status = models.CharField(max_length=50, 
+                              choices=[ ('To Do', 'To Do'),
+                                        ('In Progress','In Progress'),
+                                        ('Done', 'Done')])
+    priority = models.CharField(max_length=50, 
+                              choices=[ ('Low', 'Low'),
+                                        ('Medium','Medium'),
+                                        ('High', 'High')])
+    assigned_to = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL,null=True,blank=True, related_name='assigned_tasks')
+    
+    project = models.ForeignKey(Projects, on_delete=models.CASCADE, related_name='tasks')
+    created_at = models.DateTimeField(auto_now_add=True)
+    due_date = models.DateTimeField()
+
+    
+    def __str__(self):
+        return f"{self.title} - {self.status} - Priority: {self.priority}"  
+    
+    
+    
+
                               
