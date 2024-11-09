@@ -10,22 +10,23 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id', 'username', 'email', 'first_name', 'last_name', 'date_joined']
     
 class ProjectsSerializer(serializers.ModelSerializer):
-    owner = UserSerializer(read_only = True)
+    owner = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+    #owner = UserSerializer(read_only = True)
     class Meta:
         model = Projects
         fields = ['id', 'name', 'description', 'owner', 'created_at']
         
         
 class ProjectMemberSerializer(serializers.ModelSerializer):
-    project = ProjectsSerializer(read_only = True)
-    user = UserSerializer(read_only = True)
+    project = serializers.PrimaryKeyRelatedField(queryset=Projects.objects.all())
+    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
     class Meta:
         model = ProjectMembers
         fields = ['id', 'project', 'user', 'role']
         
 class TasksSerializer(serializers.ModelSerializer):
-    assigned_to = UserSerializer(read_only = True)
-    project = ProjectsSerializer(read_only = True)
+    assigned_to = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+    project = serializers.PrimaryKeyRelatedField(queryset=Projects.objects.all())
     
     class Meta:
         model = Tasks
@@ -33,8 +34,8 @@ class TasksSerializer(serializers.ModelSerializer):
         
         
 class CommentsSerializer(serializers.ModelSerializer):
-    user = UserSerializer(read_only = True)
-    task =  TasksSerializer(read_only = True)
+    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+    task =  serializers.PrimaryKeyRelatedField(queryset=Tasks.objects.all())
     class Meta:
         model = Comments
         fields = ['id', 'content', 'user', 'task', 'created_at']
