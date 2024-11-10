@@ -23,13 +23,10 @@ class UserSerializer(serializers.ModelSerializer):
         password = validated_data.pop('password', None)
         user = super().update(instance, validated_data)
         if password:
-            user.set_password(password)  # Set the password hash
+            user.set_password(password)  
             user.save()
         return user
     
-
-
-
 
 
 class ProjectsSerializer(serializers.ModelSerializer):
@@ -38,6 +35,12 @@ class ProjectsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Projects
         fields = ['id', 'name', 'description', 'owner', 'created_at']
+        
+        
+    def create(self, validated_data):
+        user = self.context['request'].user  
+        project = Projects.objects.create(owner=user, **validated_data) 
+        return project
         
         
 class ProjectMemberSerializer(serializers.ModelSerializer):
@@ -55,7 +58,8 @@ class TasksSerializer(serializers.ModelSerializer):
         model = Tasks
         fields = ['id', 'title', 'description', 'status','priority', 'assigned_to', 'project','created_at', 'due_date' ]
         
-        
+
+    
 class CommentsSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
     task =  serializers.PrimaryKeyRelatedField(queryset=Tasks.objects.all())
