@@ -15,23 +15,31 @@ Before setting up the project, ensure you have the following installed:
 ### 1. Clone the repository
 
 Clone the project repository to your local machine:
+
         git clone <repository-url> which is : https://github.com/Farzana201361-Nipa/Django_Project_Manager
 
 Command to do that: 
         git clone <https://github.com/Farzana201361-Nipa/Django_Project_Manager>
-        cd <project_manager>
+
+Innside project directory: cd <project_manager>
+
 As the repo already consist virtual environment you just need to activate it. 
+
     To activate:
+
         On Windows: venv\Scripts\activate
+
         On macOS/Linux: source myenv/bin/activate
 
-Or you can also remove mine: 
+Or you can also remove mine:
+
         rm -rf myenv 
+
 And create your own: 
+
         python3 -m venv myenv 
 
-
-Install all the dependencies inside virtual environment to avoid conflicts with other projects:
+### 1. Install all the dependencies inside virtual environment to avoid conflicts with other projects:
     pip install django
     Upgrade pip if necessary: pip install --upgrade pip 
     check if django is installed or not: ython -m django --version
@@ -44,7 +52,7 @@ Install all the dependencies inside virtual environment to avoid conflicts with 
     pip install djangorestframework-simplejwt
     python manage.py runserver
 
-                                *****Explore the project*****
+###                               *****Explore the project*****
 
 
 
