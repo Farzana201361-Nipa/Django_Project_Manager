@@ -41,7 +41,7 @@ Install all the dependencies inside virtual environment to avoid conflicts with 
     pip install djangorestframework-simplejwt
     python manage.py runserver
 
-                                *****Explore the project**
+                                *****Explore the project*****
 
 
 
@@ -51,36 +51,37 @@ You can access the API documentation for the project via tools like Postman or S
 
 User Endpoints
 
-Register User (POST /api/users/register/)
-Login User (POST /api/users/login/)
-Get User Details (GET /api/users/{id}/)
-Update User (PUT/PATCH /api/users/{id}/)
-Delete User (DELETE /api/users/{id}/)
-Project Endpoints
+    Register User (POST /api/users/register/)
+    Login User (POST /api/users/login/)
+    Get User Details (GET /api/users/{id}/)
+    Update User (PUT/PATCH /api/users/{id}/)
+    Delete User (DELETE /api/users/{id}/)
+    
+Projects Endpoints
+    List Projects (GET /api/projects/)
+    Create Project (POST /api/projects/)
+    Retrieve Project (GET /api/projects/{id}/)
+    Update Project (PUT/PATCH /api/projects/{id}/)
+    Delete Project (DELETE /api/projects/{id}/)
 
-List Projects (GET /api/projects/)
-Create Project (POST /api/projects/)
-Retrieve Project (GET /api/projects/{id}/)
-Update Project (PUT/PATCH /api/projects/{id}/)
-Delete Project (DELETE /api/projects/{id}/)
 Task Endpoints
+    List Tasks (GET /api/projects/{project_id}/tasks/)
+    Create Task (POST /api/projects/{project_id}/tasks/)
+    Retrieve Task (GET /api/tasks/{id}/)
+    Update Task (PUT/PATCH /api/tasks/{id}/)
+    Delete Task (DELETE /api/tasks/{id}/)
 
-List Tasks (GET /api/projects/{project_id}/tasks/)
-Create Task (POST /api/projects/{project_id}/tasks/)
-Retrieve Task (GET /api/tasks/{id}/)
-Update Task (PUT/PATCH /api/tasks/{id}/)
-Delete Task (DELETE /api/tasks/{id}/)
-Comment Endpoints
+Comment Endpoints:
+    List Comments (GET /api/tasks/{task_id}/comments/)
+    Create Comment (POST /api/tasks/{task_id}/comments/)
+    Retrieve Comment (GET /api/comments/{id}/)
+    Update Comment (PUT/PATCH /api/comments/{id}/)
+    Delete Comment (DELETE /api/comments/{id}/)
 
-List Comments (GET /api/tasks/{task_id}/comments/)
-Create Comment (POST /api/tasks/{task_id}/comments/)
-Retrieve Comment (GET /api/comments/{id}/)
-Update Comment (PUT/PATCH /api/comments/{id}/)
-Delete Comment (DELETE /api/comments/{id}/)
 For detailed API documentation, use Postman or Swagger.
 
 
-                                Contributing
+                                            Contributing
 If you want to contribute to this project, feel free to fork the repository, make changes, and submit a pull request.
 
 To Do:
