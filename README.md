@@ -1,4 +1,5 @@
 # Django_Project_Manager
+###This is a project management tool that allows teams to collaborate on projects built using Django REST API
 
 ## Prerequisites
 
@@ -21,7 +22,7 @@ Clone the project repository to your local machine:
 Command to do that: 
         git clone <https://github.com/Farzana201361-Nipa/Django_Project_Manager>
 
-Innside project directory: cd <project_manager>
+Inside project directory: cd <project_manager>
 
 As the repo already consist virtual environment you just need to activate it. 
 
@@ -42,7 +43,7 @@ And create your own:
 ### 1. Install all the dependencies inside virtual environment to avoid conflicts with other projects:
     pip install django
     Upgrade pip if necessary: pip install --upgrade pip 
-    check if django is installed or not: ython -m django --version
+    check if django is installed or not: python -m django --version
     **Try to run this: python manage.py runserver or python3 manage.py runserver
     python manage.py createsuperuser (If you want to see the changes in Django admin)
     python manage.py makemigrations(if needed)
