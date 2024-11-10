@@ -1,4 +1,3 @@
-
 from rest_framework import serializers
 from . models import User, Projects, ProjectMembers, Tasks, Comments
 
@@ -58,17 +57,16 @@ class TasksSerializer(serializers.ModelSerializer):
         model = Tasks
         fields = ['id', 'title', 'description', 'status','priority', 'assigned_to', 'project','created_at', 'due_date' ]
         
-
-    
 class CommentsSerializer(serializers.ModelSerializer):
-    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
-    task =  serializers.PrimaryKeyRelatedField(queryset=Tasks.objects.all())
+    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all()) 
+    task = serializers.PrimaryKeyRelatedField(queryset=Tasks.objects.all())
+
     class Meta:
         model = Comments
         fields = ['id', 'content', 'user', 'task', 'created_at']
-        
-        
-        
-        
-        
-        
+
+    def create(self, validated_data):
+        user = self.context['request'].user  
+
+        comment = Comments.objects.create(user=user, **validated_data)
+        return comment

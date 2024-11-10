@@ -159,5 +159,33 @@ class CommentsViewSet(viewsets.ModelViewSet):
     serializer_class = CommentsSerializer
     permission_classes = [IsAuthenticated]
     
-    
-    
+    def get_queryset(self):
+        task_id = self.kwargs.get('task_id')
+        if task_id:
+            return Comments.objects.filter(task_id=task_id)
+        return super().get_queryset()
+
+    def create(self, request, *args, **kwargs):
+        task_id = self.kwargs.get('task_id')
+        if not task_id:
+            return Response({"error": "Task ID is required."}, status=status.HTTP_400_BAD_REQUEST)
+        
+        try:
+            task = Tasks.objects.get(id=task_id)
+        except Tasks.DoesNotExist:
+            return Response({"error": "Task not found."}, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(task=task, author=request.user) 
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def retrieve(self, request, *args, **kwargs):
+        return super().retrieve(request, *args, **kwargs)
+
+    def update(self, request, *args, **kwargs):
+        return super().update(request, *args, **kwargs)
+
+    def destroy(self, request, *args, **kwargs):
+        return super().destroy(request, *args, **kwargs)
