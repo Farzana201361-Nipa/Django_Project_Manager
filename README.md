@@ -15,17 +15,20 @@ Before setting up the project, ensure you have the following installed:
 ### 1. Clone the repository
 
 Clone the project repository to your local machine:
-git clone <repository-url> which is : https://github.com/Farzana201361-Nipa/Django_Project_Manager
+        git clone <repository-url> which is : https://github.com/Farzana201361-Nipa/Django_Project_Manager
 
-Command to do that: git clone <https://github.com/Farzana201361-Nipa/Django_Project_Manager>
-cd <project_manager>
+Command to do that: 
+        git clone <https://github.com/Farzana201361-Nipa/Django_Project_Manager>
+        cd <project_manager>
 As the repo already consist virtual environment you just need to activate it. 
-To activate:
-    On Windows: venv\Scripts\activate
-    On macOS/Linux: source myenv/bin/activate
+    To activate:
+        On Windows: venv\Scripts\activate
+        On macOS/Linux: source myenv/bin/activate
 
-Or you can also remove mine: rm -rf myenv 
-And create your own: python3 -m venv myenv 
+Or you can also remove mine: 
+        rm -rf myenv 
+And create your own: 
+        python3 -m venv myenv 
 
 
 Install all the dependencies inside virtual environment to avoid conflicts with other projects:
@@ -48,8 +51,9 @@ Install all the dependencies inside virtual environment to avoid conflicts with 
 
 API Documentation
 You can access the API documentation for the project via tools like Postman or Swagger. I have used Postman.
+You can find the documentation inside the project repo.
 
-User Endpoints
+User Endpoints:
 
     Register User (POST /api/users/register/)
     Login User (POST /api/users/login/)
@@ -57,14 +61,16 @@ User Endpoints
     Update User (PUT/PATCH /api/users/{id}/)
     Delete User (DELETE /api/users/{id}/)
     
-Projects Endpoints
+Projects Endpoints:
+
     List Projects (GET /api/projects/)
     Create Project (POST /api/projects/)
     Retrieve Project (GET /api/projects/{id}/)
     Update Project (PUT/PATCH /api/projects/{id}/)
     Delete Project (DELETE /api/projects/{id}/)
 
-Task Endpoints
+Task Endpoints:
+
     List Tasks (GET /api/projects/{project_id}/tasks/)
     Create Task (POST /api/projects/{project_id}/tasks/)
     Retrieve Task (GET /api/tasks/{id}/)
@@ -72,6 +78,7 @@ Task Endpoints
     Delete Task (DELETE /api/tasks/{id}/)
 
 Comment Endpoints:
+
     List Comments (GET /api/tasks/{task_id}/comments/)
     Create Comment (POST /api/tasks/{task_id}/comments/)
     Retrieve Comment (GET /api/comments/{id}/)
